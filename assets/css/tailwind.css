@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	.modal-open {
+		@apply overflow-hidden;
+	}
+
+	.h-screen-new {
+		height: 100dvh;
+		height: 100vh;
+	}
+
+	.col {
+		@apply flex flex-col;
+	}
+
+	.row {
+		@apply flex flex-row;
+	}
+
+	.center {
+		@apply items-center justify-center;
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	h1 {
+		@apply text-4xl font-bold md:text-5xl;
+	}
+
+	h2 {
+		@apply text-3xl font-semibold md:text-4xl;
+	}
+
+	h3 {
+		@apply text-2xl font-medium md:text-3xl;
+	}
+
+	h4 {
+		@apply text-xl font-normal md:text-2xl;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+html {
+	@apply antialiased;
+	@apply overflow-x-hidden;
+	@apply scroll-smooth;
+}

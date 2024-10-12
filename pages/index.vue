@@ -4,15 +4,19 @@
 			Color mode: <span class="capitalize">{{ $colorMode.value }}</span>
 		</h1>
 		<select class="select select-bordered w-full max-w-xs" v-model="$colorMode.preference">
-			<option selected value="light">Light</option>
-			<option value="dark">Dark</option>
-			<option value="night">Night</option>
+			<option v-for="option in colorOptions" :key="option.value" :value="option.value">
+				{{ option.text }}
+			</option>
 		</select>
 		<button class="btn" @click="value++">Button: {{ value }}</button>
 	</main>
 </template>
 
 <script setup>
-const colorMode = useColorMode()
 const value = ref(0)
+const colorOptions = [
+	{ value: 'light', text: 'Light' },
+	{ value: 'dark', text: 'Dark' },
+	{ value: 'custom', text: 'Custom' }
+]
 </script>

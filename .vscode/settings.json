@@ -3,6 +3,7 @@
 		"source.fixAll.eslint": "explicit"
 	},
 	"editor.formatOnSave": false,
+	"css.lint.unknownAtRules": "ignore",
 	"eslint.validate": ["javascript", "javascriptreact", "vue", "html", "vue-html", "css", "json"],
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",

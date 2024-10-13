@@ -12,7 +12,9 @@ export default defineNuxtConfig({
 		'@formkit/auto-animate/nuxt',
 		'@nuxtjs/color-mode',
 		'@nuxt/content',
-		'shadcn-nuxt'
+		'shadcn-nuxt',
+		'dayjs-nuxt',
+		'@nuxt/image'
 	],
 	app: {
 		head: {
@@ -57,23 +59,33 @@ export default defineNuxtConfig({
 					content: process.env.WEBSITE_DESCRIPTION || "Welcome to Hybes's Nuxt Starter"
 				}
 			],
-			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-			script: [
-				{
-					hid: 'umami-script',
-					src: 'https://view.cnnct.uk/script.js',
-					async: true,
-					'data-website-id': process.env.UMAMI_WEBSITE_ID
-				}
-			]
+			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
 		},
 		pageTransition: { name: 'fade', mode: 'out-in' }
+	},
+	head: {
+		script: [
+			...(process.env.UMAMI_WEBSITE_ID
+				? [
+						{
+							hid: 'umami-script',
+							src: 'https://view.cnnct.uk/script.js',
+							async: true,
+							'data-website-id': process.env.UMAMI_WEBSITE_ID
+						}
+					]
+				: [])
+		]
 	},
 	site: {
 		url: `https://${process.env.WEBSITE_URL || 'localhost:3000'}`,
 		name: process.env.WEBSITE_NAME || "Hybes's Nuxt Starter",
 		description: process.env.WEBSITE_DESCRIPTION || "Welcome to Hybes's Nuxt Starter",
 		defaultLocale: 'en'
+	},
+	image: {
+		quality: 80,
+		dir: 'assets/images'
 	},
 	seo: {
 		redirectToCanonicalSiteUrl: true
@@ -93,6 +105,9 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
+			websiteName: process.env.WEBSITE_NAME || "Hybes's Nuxt Starter",
+			websiteNickname: process.env.WEBSITE_NICKNAME || 'hybes',
+			websiteUrl: process.env.WEBSITE_URL || 'localhost:3000',
 			motion: {
 				directives: {
 					slide: {

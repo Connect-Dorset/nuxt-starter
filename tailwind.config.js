@@ -14,20 +14,20 @@ module.exports = {
 		themes: [
 			{
 				custom: {
-					primary: '#a991f7',
-					secondary: '#f6d860',
-					accent: '#37cdbe',
-					neutral: '#3d4451',
-					'base-100': '#ea9900',
-					'--rounded-box': '99rem',
-					'--rounded-btn': '99rem',
-					'--rounded-badge': '99rem',
+					primary: '#ea9900',
+					secondary: '#e9e9e9',
+					accent: '#b5b5b5',
+					neutral: '#a0a0a0',
+					'base-100': '#222',
+					'--rounded-box': '0.7rem',
+					'--rounded-btn': '0.7rem',
+					'--rounded-badge': '0.7rem',
 					'--animation-btn': '0.25s',
 					'--animation-input': '0.2s',
-					'--btn-focus-scale': '0.95',
+					'--btn-focus-scale': '0.99',
 					'--border-btn': '1px',
-					'--tab-border': '9px',
-					'--tab-radius': '99rem'
+					'--tab-border': '1px',
+					'--tab-radius': '0.5rem'
 				}
 			},
 			...(process.env.AVAILABLE_THEMES || 'light,dark').split(',').map((theme) => theme.trim())

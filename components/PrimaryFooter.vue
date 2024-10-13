@@ -13,11 +13,11 @@
 		</nav>
 		<form @submit.prevent="submit">
 			<h6 class="footer-title">Newsletter</h6>
-			<fieldset class="form-control w-80">
+			<fieldset class="form-control w-full md:w-80">
 				<label class="label">
 					<span class="label-text">Enter your email address</span>
 				</label>
-				<div class="join">
+				<div class="join join-vertical md:join-horizontal">
 					<input
 						v-model="newsletterEmail"
 						type="email"

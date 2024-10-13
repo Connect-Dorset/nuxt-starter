@@ -18,7 +18,7 @@ module.exports = {
 					secondary: '#e9e9e9',
 					accent: '#b5b5b5',
 					neutral: '#a0a0a0',
-					'base-100': '#222',
+					'base-100': '#111',
 					'--rounded-box': '0.7rem',
 					'--rounded-btn': '0.7rem',
 					'--rounded-badge': '0.7rem',

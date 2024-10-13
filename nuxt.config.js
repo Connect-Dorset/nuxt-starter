@@ -12,7 +12,8 @@ export default defineNuxtConfig({
 		'@nuxt/icon',
 		'@formkit/auto-animate/nuxt',
 		'@nuxtjs/color-mode',
-		'@nuxt/content'
+		'@nuxt/content',
+		'shadcn-nuxt'
 	],
 	app: {
 		head: {

@@ -1,9 +1,23 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs'
+import globals from 'globals'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import js from '@eslint/js'
+import { FlatCompat } from '@eslint/eslintrc'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+	allConfig: js.configs.all
+})
 
 export default withNuxt({
 	files: ['**/*.js', '**/*.vue'],
 	ignores: ['lib/**/*', 'components/ui/**/*', '.nuxt/**/*'],
+	...compat.extends('@nuxt/eslint-config', 'plugin:prettier/recommended'),
 	rules: {
 		'prettier/prettier': [
 			'error',

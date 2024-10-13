@@ -43,7 +43,7 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Raleway', 'sans-serif']
+				heading: ['Raleway', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {

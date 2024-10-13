@@ -108,6 +108,17 @@ export default defineNuxtConfig({
 			websiteName: process.env.WEBSITE_NAME || "Hybes's Nuxt Starter",
 			websiteNickname: process.env.WEBSITE_NICKNAME || 'hybes',
 			websiteUrl: process.env.WEBSITE_URL || 'localhost:3000',
+			defaultTheme: process.env.THEME || 'light',
+			availableThemes: (process.env.AVAILABLE_THEMES
+				? process.env.AVAILABLE_THEMES.split(',')
+				: ['light', 'dark']
+			).includes('custom')
+				? process.env.AVAILABLE_THEMES
+					? process.env.AVAILABLE_THEMES.split(',')
+					: ['light', 'dark']
+				: (process.env.AVAILABLE_THEMES ? process.env.AVAILABLE_THEMES.split(',') : ['light', 'dark']).concat(
+						'custom'
+					),
 			motion: {
 				directives: {
 					slide: {

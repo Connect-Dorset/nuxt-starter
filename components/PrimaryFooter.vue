@@ -11,7 +11,7 @@
 				>{{ link.text }}</NuxtLink
 			>
 		</nav>
-		<form>
+		<form @submit.prevent="submit">
 			<h6 class="footer-title">Newsletter</h6>
 			<fieldset class="form-control w-80">
 				<label class="label">
@@ -20,12 +20,14 @@
 				<div class="join">
 					<input
 						v-model="newsletterEmail"
-						type="text"
+						type="email"
 						placeholder="username@site.com"
 						class="input join-item input-bordered"
+						required
 					/>
-					<button class="btn btn-primary join-item" @click.prevent="submit">Subscribe</button>
+					<button class="btn btn-primary join-item" type="submit">Subscribe</button>
 				</div>
+				<span v-if="errorMessage" class="text-red-500">{{ errorMessage }}</span>
 			</fieldset>
 		</form>
 	</footer>
@@ -62,13 +64,30 @@ const footerSections = ref([
 ])
 
 const newsletterEmail = ref('')
+const errorMessage = ref('')
 
 const submit = async () => {
+	if (!validateEmail(newsletterEmail.value)) {
+		errorMessage.value = 'Please enter a valid email address.'
+		return
+	}
+	errorMessage.value = ''
 	const response = await $fetch('/api/newsletter', {
 		method: 'POST',
 		body: {
 			email: newsletterEmail.value
 		}
 	})
+	if (response.error) {
+		errorMessage.value = response.error
+	}
+	if (response.success) {
+		newsletterEmail.value = ''
+	}
+}
+
+const validateEmail = (email) => {
+	const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+	return re.test(email)
 }
 </script>

@@ -6,7 +6,12 @@
 			<div class="collapse-title text-center text-xl font-medium">Click me to show/hide content</div>
 			<div class="col center collapse-content gap-2">
 				<select v-model="$colorMode.preference" class="select select-bordered w-full max-w-xs">
-					<option v-for="option in colorOptions" :key="option.value" :value="option.value">
+					<option
+						v-for="option in colorOptions"
+						:key="option.value"
+						:value="option.value"
+						:selected="option.value === $colorMode.preference"
+					>
 						{{ option.text }}
 					</option>
 				</select>
@@ -17,9 +22,8 @@
 
 <script setup>
 const config = useRuntimeConfig()
-const colorOptions = ref([
-	{ value: 'light', text: 'Light' },
-	{ value: 'dark', text: 'Dark' },
-	{ value: 'custom', text: 'Custom' }
-])
+const themes = config.public.availableThemes
+const colorOptions = ref(
+	themes.map((theme) => ({ value: theme, text: theme.charAt(0).toUpperCase() + theme.slice(1) }))
+)
 </script>

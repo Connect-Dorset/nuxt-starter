@@ -14,29 +14,32 @@ const compat = new FlatCompat({
 	allConfig: js.configs.all
 })
 
-export default withNuxt({
-	files: ['**/*.js', '**/*.vue'],
-	ignores: ['lib/**/*', 'components/ui/**/*', '.nuxt/**/*'],
-	...compat.extends('@nuxt/eslint-config', 'plugin:prettier/recommended'),
-	rules: {
-		'prettier/prettier': [
-			'error',
-			{
-				singleQuote: true,
-				semi: false,
-				useTabs: true,
-				tabWidth: 4,
-				trailingComma: 'none',
-				bracketSpacing: true,
-				printWidth: 120,
-				endOfLine: 'auto'
-			}
-		],
-		'css/unknown-at-rules': 'off',
-		'no-undef': 'off',
-		'no-unused-vars': 'off',
-		'@typescript-eslint/no-unused-vars': 'off',
-		'vue/no-use-v-if-with-v-for': 'off',
-		'vue/no-v-html': 'off'
+export default withNuxt([
+	{
+		ignores: ['lib/**/*', 'components/ui/**/*', '.nuxt/**/*']
+	},
+	...compat.extends('eslint:recommended', 'plugin:prettier/recommended'),
+	{
+		rules: {
+			'prettier/prettier': [
+				'error',
+				{
+					singleQuote: true,
+					semi: false,
+					useTabs: true,
+					tabWidth: 4,
+					trailingComma: 'none',
+					bracketSpacing: true,
+					printWidth: 120,
+					endOfLine: 'auto'
+				}
+			],
+
+			'no-undef': 'off',
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': 'off',
+			'vue/no-use-v-if-with-v-for': 'off',
+			'vue/no-v-html': 'off'
+		}
 	}
-})
+])

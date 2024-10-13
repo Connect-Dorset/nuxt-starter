@@ -3,7 +3,7 @@
 		<h1>
 			Color mode: <span class="capitalize">{{ $colorMode.value }}</span>
 		</h1>
-		<select class="select select-bordered w-full max-w-xs" v-model="$colorMode.preference">
+		<select v-model="$colorMode.preference" class="select select-bordered w-full max-w-xs">
 			<option v-for="option in colorOptions" :key="option.value" :value="option.value">
 				{{ option.text }}
 			</option>
@@ -14,9 +14,9 @@
 
 <script setup>
 const value = ref(0)
-const colorOptions = [
+const colorOptions = ref([
 	{ value: 'light', text: 'Light' },
 	{ value: 'dark', text: 'Dark' },
 	{ value: 'custom', text: 'Custom' }
-]
+])
 </script>

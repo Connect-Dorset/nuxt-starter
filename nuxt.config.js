@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 export default defineNuxtConfig({
 	compatibilityDate: '2024-10-12',
 	devtools: { enabled: true },

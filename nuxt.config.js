@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 		'@nuxt/eslint',
 		'@nuxtjs/tailwindcss',
 		'@vueuse/nuxt',
+		'@vueuse/motion/nuxt',
 		'@nuxt/fonts',
 		'@nuxtjs/seo',
 		'@nuxt/scripts',
@@ -121,7 +122,7 @@ export default defineNuxtConfig({
 					),
 			motion: {
 				directives: {
-					slide: {
+					enter: {
 						initial: {
 							opacity: 0,
 							y: 40

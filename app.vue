@@ -1,25 +1,22 @@
 <template>
 	<div>
-		<NavigationBar />
+		<NavigationBar ref="nav" />
 		<NuxtPage
-			:style="{ 'margin-top': `${navHeight}px`, 'min-height': `calc(100dvh - ${navHeight + footerHeight}px)` }"
+			:style="{
+				'padding-top': `${navHeight}px`,
+				'min-height': `calc(100dvh - ${footerHeight}px)`
+			}"
 		/>
-		<PrimaryFooter />
+		<PrimaryFooter ref="footer" />
 	</div>
 </template>
 
 <script setup>
-const navHeight = ref(0)
-const footerHeight = ref(0)
+const nav = ref(null)
+const footer = ref(null)
+const { height: navHeight } = useElementSize(nav)
+const { height: footerHeight } = useElementSize(footer)
 
 provide('navHeight', navHeight)
 provide('footerHeight', footerHeight)
-onMounted(() => {
-	navHeight.value = document.querySelector('header').clientHeight
-	footerHeight.value = document.querySelector('footer').clientHeight
-	window.addEventListener('resize', () => {
-		navHeight.value = document.querySelector('header').clientHeight
-		footerHeight.value = document.querySelector('footer').clientHeight
-	})
-})
 </script>

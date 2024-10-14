@@ -77,4 +77,5 @@ html {
 	@apply antialiased;
 	@apply overflow-x-hidden;
 	@apply scroll-smooth;
+	@apply overscroll-none;
 }

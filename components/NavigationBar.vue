@@ -3,7 +3,7 @@
 		<nav class="center mx-auto flex">
 			<ul class="menu w-full gap-1 rounded-box bg-base-200 shadow-sm md:menu-horizontal md:w-auto">
 				<li class="md:hidden">
-					<details>
+					<details ref="menu">
 						<summary>
 							<NuxtLink :to="currentPage.path" class="flex items-center gap-2">
 								<Icon :name="currentPage.icon" class="h-5 w-5" />
@@ -11,7 +11,7 @@
 							</NuxtLink>
 						</summary>
 						<ul>
-							<li v-for="page in otherPages" :key="page.path">
+							<li v-for="page in otherPages" :key="page.path" @click="closeMenu">
 								<NuxtLink :to="page.path">
 									<Icon :name="page.icon" class="h-5 w-5" />
 									{{ page.name }}
@@ -42,4 +42,10 @@ const pages = ref([
 
 const currentPage = computed(() => pages.value.find((page) => page.path === route.path) || pages.value[0])
 const otherPages = computed(() => pages.value.filter((page) => page.path !== currentPage.value.path))
+
+const menu = ref(null)
+
+const closeMenu = () => {
+	menu.value?.removeAttribute('open')
+}
 </script>
